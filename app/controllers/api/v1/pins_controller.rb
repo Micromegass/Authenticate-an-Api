@@ -24,10 +24,10 @@ class Api::V1::PinsController < ApplicationController
       token = request.headers['HTTP_X_API_TOKEN']
      if User.find_by_email(email)      
         unless user.api_token == token
-          render status: "HTTP 401"
+          render status: 401
         end
       else
-        render status: "HTTP 401"
+        render status: 401
       end
     end    
 
