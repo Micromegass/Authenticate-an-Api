@@ -22,7 +22,8 @@ class Api::V1::PinsController < ApplicationController
      def restrict_access
        email = request.headers['HTTP_X_USER_EMAIL']
        token = request.headers['HTTP_X_API_TOKEN']
-      if User.find_by_email(email)      
+       user = User.find_by_email(email) 
+      if user      
          unless user.api_token == token
           head 401
          end
